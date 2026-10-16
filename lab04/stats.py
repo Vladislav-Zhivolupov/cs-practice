@@ -33,6 +33,50 @@ def read_valid(lines: list[str]) -> list[dict]:
     return records
 
 
+def _mean_by_city(recordes: list[dict]) -> dict:
+
+    total = {}
+    count = {}
+
+    for rec in recordes:
+        city = rec['city']
+        total[city] = total.get(city, 0.0) + rec['temperature']
+        count[city] = count.get(city, 0) + 1
+
+    return {city: total[city] / count[city] for city in total}
+
+
+def average_by_city(recordes: list[dict]) -> dict:
+    return {city: round(avg, 1) for city, avg in _mean_by_city(recordes).items()}
+
+
+def warmest_city(recordes: list[dict]) -> str:
+    means = _mean_by_city(recordes)
+    if not means:
+        raise ValueError('ет записей')
+    return min(means, key=lambda city: (-means[city], city))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
