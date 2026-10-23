@@ -3,7 +3,7 @@ import os
 
 from logstats import count_levels, top_errors, format_report
 
-path = input()
+path = input('введите events.log > ')
 
 with open(path, encoding="utf-8") as log:
     counts = count_levels(log)
