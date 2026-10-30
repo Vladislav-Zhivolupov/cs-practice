@@ -17,7 +17,7 @@ def deepest_path(paths: list[str]) -> str:
     
     if not paths:
         return ""
-    return max(paths, key=lambda p: (p.count("/"), p))
+    return min(paths, key=lambda p: (-p.count("/"), p))
  
  
 def human_size(n_bytes: int) -> str:
