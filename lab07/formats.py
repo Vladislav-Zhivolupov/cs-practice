@@ -34,7 +34,7 @@ def parse_settings(lines: list[str]) -> dict:
     settings: dict = {}
     current_list = None
     for line in lines:
-        line = line.split("#", 1)[0].strip()
+        line = line.split("#", 1)[0].strip().replace(',','.')
         if not line:
             continue
         if line == "-" or line.startswith("- "):
